@@ -24,28 +24,10 @@ sudo dnf config-manager --add-repo=https://rpm.releases.hashicorp.com/RHEL/hashi
 sudo dnf install consul -y
 
 sudo rm -rf /etc/consul.d/consul.hcl
-sudo cp /vagrant/config/consul/consul.hcl /etc/consul.d/. 
+sudo cp /vagrant/config/consul/client/consul.hcl /etc/consul.d/. 
 
 echo "node_name = \"$(hostname)\"" > /etc/consul.d/nodename.hcl
 
 sudo systemctl daemon-reload
 sudo systemctl enable consul
 sudo systemctl restart consul  
-
-
-
-echo "Nomad Install Beginning..."
-sudo dnf config-manager --add-repo=https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
-sudo dnf install nomad -y
-
-sudo rm -rf /etc/nomad.d/nomad.hcl
-sudo cp /vagrant/config/nomad/nomad.hcl /etc/nomad.d/.
-echo "name = \"$(hostname)\"" > /etc/nomad.d/nodename.hcl
-
-
-usermod -a -G docker nomad
-
-sudo systemctl daemon-reload
-sudo systemctl enable nomad
-sudo systemctl restart nomad 
-

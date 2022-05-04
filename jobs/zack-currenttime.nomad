@@ -34,8 +34,8 @@ job "currenttime" {
 
         # for consul
         service {
-            name = "web"
-            tags = ["global", "web"]
+            name = "currenttime"
+            tags = ["global", "currenttime"]
             port = "web"
         }
 

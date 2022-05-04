@@ -21,4 +21,11 @@ Vagrant.configure(2) do |config|
     end
   end
 
+    # Optional consul clients
+    config.vm.define "client" do |client|
+      client.vm.hostname = "client-1"
+      client.vm.network "private_network", ip: "192.168.56.200"
+      client.vm.provision "shell", path: "centos-client-install.sh"
+    end
+
 end

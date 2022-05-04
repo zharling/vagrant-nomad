@@ -152,3 +152,11 @@ nomad job stop -purge currenttime
 
 ## Links
 https://www.hashicorp.com/blog/the-kubernetes-to-nomad-cheat-sheet
+
+
+## Consul
+get service info *from client box
+
+```
+dig @127.0.0.1 -p 8600 currenttime.service.consul SRV
+```
